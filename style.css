@@ -1,0 +1,57 @@
+.header {
+  height: 8%;
+}
+.header h1 {
+  text-align: center;
+  margin: 5px 0px;
+}
+
+.game-box {
+  margin: 10px auto;
+  width: 100%;
+  height: 92%;
+  text-align: center;
+  justify-content: center;
+  max-width: 900px;
+}
+.game-box .colu {
+  display: flex;
+}
+.game-box .colu .computer-box {
+  position: relative;
+  align-items: center;
+}
+.game-box .colu .computer-box .computer-hand {
+  position: absolute;
+  width: 250px;
+  height: 250px;
+}
+.game-box .colu .computer-box .computer-hand img.ram-hand {
+  width: 250px;
+  height: 250px;
+}
+.game-box .colu .result-box {
+  background-color: red;
+  width: 300px;
+  height: 200px;
+  margin-left: 70%;
+}
+.game-box .select-hand-container .select-hand-text {
+  font-size: 40px;
+}
+.game-box .select-hand-container .select-hand-box {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 80px;
+}
+.game-box .select-hand-container .select-hand-box .select-hand-card {
+  width: 200px;
+  height: 200px;
+}
+.game-box .select-hand-container .select-hand-box .select-hand-card button {
+  padding: 0;
+}
+.game-box .select-hand-container .select-hand-box .select-hand-card img {
+  width: 200px;
+  height: 200px;
+}/*# sourceMappingURL=style.css.map */
