@@ -48,11 +48,11 @@
 }
 .game-box .colu .computer-box #ready_message {
   font-size: 40px;
-  opacity: 1;
+  opacity: 0;
   transform: translateY(70px) translateX(10px);
 }
-.game-box .colu .computer-box #ready_message.start {
-  opacity: 0;
+.game-box .colu .computer-box #ready_message.ready {
+  opacity: 1;
 }
 .game-box .colu .result-box {
   position: relative;
