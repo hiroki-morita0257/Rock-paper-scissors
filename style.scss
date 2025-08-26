@@ -4,14 +4,15 @@
     // height: 8%;
     //   font-size: 64px;
     text-align: center;
-    margin: 5px 0px;
+    margin: 3px 0px;
+    white-space: nowrap;
   }
 }
 
 .game-box {
   margin: 10px auto;
   width: 100%;
-  height: 92%;
+  height: 80%;
   text-align: center;
   justify-content: center;
   //   width: 100vh;
@@ -19,27 +20,81 @@
 
   & .colu {
     display: flex;
+    width: 900px;
+    height: 250px;
+    align-items: center;
 
     & .computer-box {
       position: relative;
-      align-items: center;
+      //   justify-content: center;
+      width: 250px;
+      height: 250px;
+      margin-left: auto;
 
       & .computer-hand {
         position: absolute;
         width: 250px;
         height: 250px;
+        opacity: 0;
 
         & img.ram-hand {
           width: 250px;
           height: 250px;
         }
+        &.gu {
+          opacity: 1;
+        }
+        &.cho {
+          opacity: 1;
+        }
+        &.pa {
+          opacity: 1;
+        }
+      }
+      #ready_message {
+        font-size: 40px;
+        opacity: 1;
+        transform: translateY(70px) translateX(10px);
+
+        &.start {
+          opacity: 0;
+        }
       }
     }
     & .result-box {
+      position: relative;
       background-color: red;
-      width: 300px;
-      height: 200px;
-      margin-left: 70%;
+      width: 250px;
+      height: 100px;
+      margin-left: auto;
+      margin-right: 5%;
+      //   justify-content: flex-end;
+      //   margin-left: 70%;
+      //   justify-content: center;
+      //   align-items: center;
+      & p {
+        margin: 0;
+        font-size: 25px;
+        transform: translateY(-50px);
+      }
+      & .result {
+        font-size: 50px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto 0;
+        // text-align: center;
+        opacity: 0;
+
+        &.win {
+          opacity: 1;
+        }
+        &.lose {
+          opacity: 1;
+        }
+      }
     }
   }
 
