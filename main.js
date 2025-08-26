@@ -23,30 +23,33 @@ const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 async function one_rotation() {
   computer_gu.classList.add("gu");
-  await wait(100);
+  await wait(70);
   computer_gu.classList.remove("gu");
 
   computer_cho.classList.add("cho");
-  await wait(100);
+  await wait(70);
   computer_cho.classList.remove("cho");
 
   computer_pa.classList.add("pa");
-  await wait(100);
+  await wait(70);
   computer_pa.classList.remove("pa");
 }
 
 let roulette;
 function start_roulette() {
+  computer_gu.classList.remove("gu");
+  computer_cho.classList.remove("cho");
+  computer_pa.classList.remove("pa");
   roulette = setInterval(function () {
     one_rotation();
-  }, 301);
+  }, 211);
 }
 function stop_roulette() {
   clearInterval(roulette);
 }
 
 let computer_hand;
-function judge() {
+function detect() {
   if (computer_gu.classList.contains("gu")) {
     computer_hand = 0;
   } else if (computer_cho.classList.contains("cho")) {
@@ -58,24 +61,55 @@ function judge() {
 }
 function inview_computer_hand() {
   if (computer_hand === 0) {
-    computer_gu.classList.remove("gu");
+    // computer_gu.classList.remove("gu");
     computer_gu.classList.add("gu");
   } else if (computer_hand === 1) {
-    computer_cho.classList.remove("cho");
+    // computer_cho.classList.remove("cho");
     computer_cho.classList.add("cho");
   } else if (computer_hand === 2) {
-    computer_pa.classList.remove("pa");
+    // computer_pa.classList.remove("pa");
     computer_pa.classList.add("pa");
   }
   console.log("表示");
 }
 
 async function stop_routine() {
-  judge();
+  detect();
   stop_roulette();
-  await wait(100);
+  await wait(80);
   inview_computer_hand();
 }
+let judge_result;
+function final_judge(select_hand) {
+  if (
+    (computer_hand === 0 && select_hand === 2) ||
+    (computer_hand === 1 && select_hand === 0) ||
+    (computer_hand === 2 && select_hand === 1)
+  ) {
+    judge_result = 0;
+  } else if (
+    (computer_hand === 0 && select_hand === 1) ||
+    (computer_hand === 1 && select_hand === 2) ||
+    (computer_hand === 2 && select_hand === 0)
+  ) {
+    judge_result = 1;
+  } else {
+    judge_result = 2;
+  }
+}
+// function inview_result() {
+//   if (computer_hand === 0) {
+//     computer_gu.classList.remove("win");
+//     computer_gu.classList.add("gu");
+//   } else if (computer_hand === 1) {
+//     computer_cho.classList.remove("cho");
+//     computer_cho.classList.add("cho");
+//   } else if (computer_hand === 2) {
+//     computer_pa.classList.remove("pa");
+//     computer_pa.classList.add("pa");
+//   }
+//   console.log("表示");
+// }
 
 select_gu.addEventListener("click", function () {});
 select_cho.addEventListener("click", function () {});
