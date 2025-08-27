@@ -12,6 +12,7 @@ const select_pa = document.getElementById("answer_select_pa");
 
 const result_win = document.getElementById("result_win");
 const result_lose = document.getElementById("result_lose");
+const result_draw = document.getElementById("result_draw");
 const GU = "gu";
 
 start_button.addEventListener("click", function () {
@@ -97,19 +98,16 @@ function final_judge(select_hand) {
     judge_result = 2;
   }
 }
-// function inview_result() {
-//   if (computer_hand === 0) {
-//     computer_gu.classList.remove("win");
-//     computer_gu.classList.add("gu");
-//   } else if (computer_hand === 1) {
-//     computer_cho.classList.remove("cho");
-//     computer_cho.classList.add("cho");
-//   } else if (computer_hand === 2) {
-//     computer_pa.classList.remove("pa");
-//     computer_pa.classList.add("pa");
-//   }
-//   console.log("表示");
-// }
+function inview_result() {
+  if (judge_result === 0) {
+    result_win.classList.add("win");
+  } else if (judge_result === 1) {
+    result_lose.classList.add("lose");
+  } else if (judge_result === 2) {
+    result_draw.classList.add("draw");
+  }
+  console.log("表示");
+}
 
 select_gu.addEventListener("click", function () {});
 select_cho.addEventListener("click", function () {});

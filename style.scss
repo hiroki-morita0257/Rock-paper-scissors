@@ -86,12 +86,15 @@
         bottom: 0;
         margin: auto 0;
         // text-align: center;
-        opacity: 0;
+        opacity: 1;
 
         &.win {
           opacity: 1;
         }
         &.lose {
+          opacity: 1;
+        }
+        &.draw {
           opacity: 1;
         }
       }

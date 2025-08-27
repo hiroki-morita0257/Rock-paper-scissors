@@ -75,12 +75,15 @@
   right: 0;
   bottom: 0;
   margin: auto 0;
-  opacity: 0;
+  opacity: 1;
 }
 .game-box .colu .result-box .result.win {
   opacity: 1;
 }
 .game-box .colu .result-box .result.lose {
+  opacity: 1;
+}
+.game-box .colu .result-box .result.draw {
   opacity: 1;
 }
 .game-box .select-hand-container .select-hand-text {
