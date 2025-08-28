@@ -26,6 +26,8 @@
   width: 250px;
   height: 250px;
   margin-left: auto;
+  background-color: rgb(204, 201, 196);
+  border-radius: 8px;
 }
 .game-box .colu .computer-box .computer-hand {
   position: absolute;
@@ -48,11 +50,11 @@
 }
 .game-box .colu .computer-box #ready_message {
   font-size: 40px;
-  opacity: 0;
+  opacity: 1;
   transform: translateY(70px) translateX(10px);
 }
-.game-box .colu .computer-box #ready_message.ready {
-  opacity: 1;
+.game-box .colu .computer-box #ready_message.started {
+  opacity: 0;
 }
 .game-box .colu .result-box {
   position: relative;
@@ -75,7 +77,10 @@
   right: 0;
   bottom: 0;
   margin: auto 0;
-  opacity: 1;
+  opacity: 0;
+}
+.game-box .colu .result-box .result.error_message {
+  font-size: 27px;
 }
 .game-box .colu .result-box .result.win {
   opacity: 1;
@@ -86,8 +91,12 @@
 .game-box .colu .result-box .result.draw {
   opacity: 1;
 }
+.game-box .colu .result-box .result.error {
+  opacity: 1;
+}
 .game-box .select-hand-container .select-hand-text {
   font-size: 40px;
+  margin: 10px auto;
 }
 .game-box .select-hand-container .select-hand-box {
   display: flex;
@@ -104,4 +113,12 @@
 .game-box .select-hand-container .select-hand-box .select-hand-card img {
   width: 200px;
   height: 200px;
+}
+.game-box .start-button button {
+  width: 100px;
+  height: 20px;
+  margin: 5px auto;
+}
+.game-box .start-button p {
+  margin: 3px auto;
 }/*# sourceMappingURL=style.css.map */

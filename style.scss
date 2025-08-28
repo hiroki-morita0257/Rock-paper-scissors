@@ -30,6 +30,8 @@
       width: 250px;
       height: 250px;
       margin-left: auto;
+      background-color: rgb(204, 201, 196);
+      border-radius: 8px;
 
       & .computer-hand {
         position: absolute;
@@ -53,11 +55,11 @@
       }
       #ready_message {
         font-size: 40px;
-        opacity: 0;
+        opacity: 1;
         transform: translateY(70px) translateX(10px);
 
-        &.ready {
-          opacity: 1;
+        &.started {
+          opacity: 0;
         }
       }
     }
@@ -86,7 +88,11 @@
         bottom: 0;
         margin: auto 0;
         // text-align: center;
-        opacity: 1;
+        opacity: 0;
+        &.error_message {
+          font-size: 27px;
+          // opacity: 1;
+        }
 
         &.win {
           opacity: 1;
@@ -97,6 +103,9 @@
         &.draw {
           opacity: 1;
         }
+        &.error {
+          opacity: 1;
+        }
       }
     }
   }
@@ -104,6 +113,7 @@
   & .select-hand-container {
     & .select-hand-text {
       font-size: 40px;
+      margin: 10px auto;
     }
     & .select-hand-box {
       display: flex;
@@ -124,6 +134,16 @@
           height: 200px;
         }
       }
+    }
+  }
+  & .start-button {
+    & button {
+      width: 100px;
+      height: 20px;
+      margin: 5px auto;
+    }
+    & p {
+      margin: 3px auto;
     }
   }
 }

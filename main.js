@@ -13,10 +13,11 @@ const select_pa = document.getElementById("answer_select_pa");
 const result_win = document.getElementById("result_win");
 const result_lose = document.getElementById("result_lose");
 const result_draw = document.getElementById("result_draw");
+const error_message = document.getElementById("error_message");
 const GU = "gu";
 
 start_button.addEventListener("click", function () {
-  ready_message.classList.remove("ready");
+  ready_message.classList.add("started");
   condition = 1;
 });
 
@@ -24,15 +25,15 @@ const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 async function one_rotation() {
   computer_gu.classList.add("gu");
-  await wait(100);
+  await wait(70);
   computer_gu.classList.remove("gu");
 
   computer_cho.classList.add("cho");
-  await wait(100);
+  await wait(70);
   computer_cho.classList.remove("cho");
 
   computer_pa.classList.add("pa");
-  await wait(100);
+  await wait(70);
   computer_pa.classList.remove("pa");
 }
 
@@ -40,14 +41,18 @@ let roulette;
 function start_roulette() {
   roulette = setInterval(function () {
     one_rotation();
-  }, 301);
+  }, 211);
+  result_win.classList.remove("win");
+  result_lose.classList.remove("lose");
+  result_draw.classList.remove("draw");
+  error_message.classList.remove("error");
 }
 function stop_roulette() {
   clearInterval(roulette);
 }
 
 let computer_hand;
-function judge() {
+function detect() {
   if (computer_gu.classList.contains("gu")) {
     computer_hand = 0;
   } else if (computer_cho.classList.contains("cho")) {
@@ -58,53 +63,62 @@ function judge() {
   console.log(computer_hand);
 }
 function inview_computer_hand() {
+  computer_gu.classList.remove("gu");
+  computer_cho.classList.remove("cho");
+  computer_pa.classList.remove("pa");
   if (computer_hand === 0) {
-    computer_gu.classList.remove("gu");
     computer_gu.classList.add("gu");
   } else if (computer_hand === 1) {
-    computer_cho.classList.remove("cho");
     computer_cho.classList.add("cho");
   } else if (computer_hand === 2) {
-    computer_pa.classList.remove("pa");
     computer_pa.classList.add("pa");
   }
-  console.log("表示");
+  console.log("com手を表示");
 }
 
 async function stop_routine() {
-  judge();
+  detect();
   stop_roulette();
   await wait(100);
   inview_computer_hand();
+  console.log("ストップルーティーン終了");
 }
 
 let judge_result;
-function final_judge(select_hand) {
+function judge(select_hand) {
   if (
     (computer_hand === 0 && select_hand === 2) ||
     (computer_hand === 1 && select_hand === 0) ||
     (computer_hand === 2 && select_hand === 1)
   ) {
-    return 0;
+    judge_result = 0;
   } else if (
     (computer_hand === 0 && select_hand === 1) ||
     (computer_hand === 1 && select_hand === 2) ||
     (computer_hand === 2 && select_hand === 0)
   ) {
-    return 1;
+    judge_result = 1;
+  } else if (
+    (computer_hand === 0 && select_hand === 0) ||
+    (computer_hand === 1 && select_hand === 1) ||
+    (computer_hand === 2 && select_hand === 2)
+  ) {
+    judge_result = 2;
   } else {
-    return 2;
+    error_message.classList.add("error");
   }
+  console.log(judge_result);
+  inview_result();
 }
 function inview_result() {
-  if (final_judge(select_hand) === 0) {
+  if (judge_result === 0) {
     result_win.classList.add("win");
-  } else if (final_judge(select_hand) === 1) {
+  } else if (judge_result === 1) {
     result_lose.classList.add("lose");
-  } else if (final_judge(select_hand) === 2) {
+  } else if (judge_result === 2) {
     result_draw.classList.add("draw");
   }
-  console.log("表示");
+  console.log("勝敗を表示");
 }
 
 select_gu.addEventListener("click", function () {});
