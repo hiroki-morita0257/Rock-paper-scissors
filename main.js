@@ -37,20 +37,22 @@ async function one_rotation() {
   computer_pa.classList.remove("pa");
 }
 
-let roulette;
+let rouletteID;
 function start_roulette() {
-  roulette = setInterval(function () {
+  rouletteID = setInterval(function () {
     one_rotation();
   }, 211);
   result_win.classList.remove("win");
   result_lose.classList.remove("lose");
   result_draw.classList.remove("draw");
   error_message.classList.remove("error");
-  start_button.classList.remove("waiting");
+  // start_button.classList.remove("waiting");
+  start_button.disabled = "disabled";
 }
 function stop_roulette() {
-  clearInterval(roulette);
-  start_button.classList.add("waiting");
+  clearInterval(rouletteID);
+  // start_button.classList.add("waiting");
+  start_button.disabled = "";
 }
 
 let computer_hand;

@@ -118,10 +118,6 @@
   width: 100px;
   height: 20px;
   margin: 5px auto;
-  opacity: 0;
-}
-.game-box .start-button button.waiting {
-  opacity: 1;
 }
 .game-box .start-button p {
   margin: 3px auto;
