@@ -24,33 +24,30 @@ const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 async function one_rotation() {
   computer_gu.classList.add("gu");
-  await wait(70);
+  await wait(100);
   computer_gu.classList.remove("gu");
 
   computer_cho.classList.add("cho");
-  await wait(70);
+  await wait(100);
   computer_cho.classList.remove("cho");
 
   computer_pa.classList.add("pa");
-  await wait(70);
+  await wait(100);
   computer_pa.classList.remove("pa");
 }
 
 let roulette;
 function start_roulette() {
-  computer_gu.classList.remove("gu");
-  computer_cho.classList.remove("cho");
-  computer_pa.classList.remove("pa");
   roulette = setInterval(function () {
     one_rotation();
-  }, 211);
+  }, 301);
 }
 function stop_roulette() {
   clearInterval(roulette);
 }
 
 let computer_hand;
-function detect() {
+function judge() {
   if (computer_gu.classList.contains("gu")) {
     computer_hand = 0;
   } else if (computer_cho.classList.contains("cho")) {
@@ -62,24 +59,25 @@ function detect() {
 }
 function inview_computer_hand() {
   if (computer_hand === 0) {
-    // computer_gu.classList.remove("gu");
+    computer_gu.classList.remove("gu");
     computer_gu.classList.add("gu");
   } else if (computer_hand === 1) {
-    // computer_cho.classList.remove("cho");
+    computer_cho.classList.remove("cho");
     computer_cho.classList.add("cho");
   } else if (computer_hand === 2) {
-    // computer_pa.classList.remove("pa");
+    computer_pa.classList.remove("pa");
     computer_pa.classList.add("pa");
   }
   console.log("表示");
 }
 
 async function stop_routine() {
-  detect();
+  judge();
   stop_roulette();
-  await wait(80);
+  await wait(100);
   inview_computer_hand();
 }
+
 let judge_result;
 function final_judge(select_hand) {
   if (
@@ -87,23 +85,23 @@ function final_judge(select_hand) {
     (computer_hand === 1 && select_hand === 0) ||
     (computer_hand === 2 && select_hand === 1)
   ) {
-    judge_result = 0;
+    return 0;
   } else if (
     (computer_hand === 0 && select_hand === 1) ||
     (computer_hand === 1 && select_hand === 2) ||
     (computer_hand === 2 && select_hand === 0)
   ) {
-    judge_result = 1;
+    return 1;
   } else {
-    judge_result = 2;
+    return 2;
   }
 }
 function inview_result() {
-  if (judge_result === 0) {
+  if (final_judge(select_hand) === 0) {
     result_win.classList.add("win");
-  } else if (judge_result === 1) {
+  } else if (final_judge(select_hand) === 1) {
     result_lose.classList.add("lose");
-  } else if (judge_result === 2) {
+  } else if (final_judge(select_hand) === 2) {
     result_draw.classList.add("draw");
   }
   console.log("表示");
