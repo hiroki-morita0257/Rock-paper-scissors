@@ -65,7 +65,7 @@
     }
     & .result-box {
       position: relative;
-      background-color: red;
+      background-color: gray;
       width: 250px;
       height: 100px;
       margin-left: auto;
@@ -96,15 +96,23 @@
 
         &.win {
           opacity: 1;
+          background-color: #008000;
+          color: #ffffff;
         }
         &.lose {
           opacity: 1;
+          background-color: #ff0000;
+          color: #ffffff;
         }
         &.draw {
           opacity: 1;
+          background-color: #ffff00;
+          color: #000000;
         }
         &.error {
           opacity: 1;
+          background-color: #f08080;
+          color: #000000;
         }
       }
     }
