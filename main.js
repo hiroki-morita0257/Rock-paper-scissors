@@ -55,18 +55,18 @@ function stop_roulette() {
   start_button.disabled = "";
 }
 
-let computer_hand;
+// let computer_hand;
 function detect() {
   if (computer_gu.classList.contains("gu")) {
-    computer_hand = 0;
+    return 0;
   } else if (computer_cho.classList.contains("cho")) {
-    computer_hand = 1;
+    return 1;
   } else if (computer_pa.classList.contains("pa")) {
-    computer_hand = 2;
+    return 2;
   }
-  console.log(computer_hand);
+  // console.log(computer_hand);
 }
-function inview_computer_hand() {
+function inview_computer_hand(computer_hand) {
   computer_gu.classList.remove("gu");
   computer_cho.classList.remove("cho");
   computer_pa.classList.remove("pa");
@@ -81,10 +81,11 @@ function inview_computer_hand() {
 }
 
 async function stop_routine() {
-  detect();
+  computer_hand = detect();
+  console.log(computer_hand);
   stop_roulette();
   await wait(100);
-  inview_computer_hand();
+  inview_computer_hand(computer_hand);
   console.log("ストップルーティーン終了");
 }
 
