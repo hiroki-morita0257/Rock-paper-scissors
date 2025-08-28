@@ -141,6 +141,11 @@
       width: 100px;
       height: 20px;
       margin: 5px auto;
+      opacity: 0;
+
+      &.waiting {
+        opacity: 1;
+      }
     }
     & p {
       margin: 3px auto;

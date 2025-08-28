@@ -46,9 +46,11 @@ function start_roulette() {
   result_lose.classList.remove("lose");
   result_draw.classList.remove("draw");
   error_message.classList.remove("error");
+  start_button.classList.remove("waiting");
 }
 function stop_roulette() {
   clearInterval(roulette);
+  start_button.classList.add("waiting");
 }
 
 let computer_hand;
@@ -84,33 +86,31 @@ async function stop_routine() {
   console.log("ストップルーティーン終了");
 }
 
-let judge_result;
 function judge(select_hand) {
   if (
     (computer_hand === 0 && select_hand === 2) ||
     (computer_hand === 1 && select_hand === 0) ||
     (computer_hand === 2 && select_hand === 1)
   ) {
-    judge_result = 0;
+    return 0;
   } else if (
     (computer_hand === 0 && select_hand === 1) ||
     (computer_hand === 1 && select_hand === 2) ||
     (computer_hand === 2 && select_hand === 0)
   ) {
-    judge_result = 1;
+    return 1;
   } else if (
     (computer_hand === 0 && select_hand === 0) ||
     (computer_hand === 1 && select_hand === 1) ||
     (computer_hand === 2 && select_hand === 2)
   ) {
-    judge_result = 2;
+    return 2;
   } else {
     error_message.classList.add("error");
   }
   console.log(judge_result);
-  inview_result();
 }
-function inview_result() {
+function inview_result(judge_result) {
   if (judge_result === 0) {
     result_win.classList.add("win");
   } else if (judge_result === 1) {
@@ -119,6 +119,13 @@ function inview_result() {
     result_draw.classList.add("draw");
   }
   console.log("勝敗を表示");
+}
+
+function jyanken_judge(player_hand) {
+  stop_routine();
+  const judge_result = judge(player_hand);
+  console.log(judge_result);
+  inview_result(judge_result);
 }
 
 select_gu.addEventListener("click", function () {});
